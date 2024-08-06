@@ -16,59 +16,115 @@
 
         <div>
             <h2>Projects</h2>
-            <h3>JavaScript USDC Exporter</h3>
-            <div class="experience">
-                
-                <ul>
-                    <li>Export USDC files in pure JS, inspired by https://github.com/robmcrosby/BlenderUSDZ.</li>
-                </ul>
-                <div class="tools-used"><span>All Tools Used:</span> Python, JavaScript, C++, USD</div>
+
+            <div class="project">
+                <h3> OpenUSD Validation Framework Contributions</h3>
+                <p> <b>  June 2024 - Present </b> </p>
+                <div class="experience">
+                    <ul>
+                        <li>OpenUSD has a validation framework which allows for developers to write validators to validate that a USD file is abiding to specific set of rules. Below are different validators I've written.</li>
+                        <li> <a href="https://github.com/PixarAnimationStudios/OpenUSD/pull/3125" target="_blank"> Link to StageMetadataChecker (coreUsd) </a></li></li>
+                        <li> <a href="https://github.com/PixarAnimationStudios/OpenUSD/pull/3134" target="_blank"> Link to StageMetadataChecker (usdGeom) </a></li></li>
+                        <li> <a href="https://github.com/PixarAnimationStudios/OpenUSD/pull/3154" target="_blank"> Link to MaterialBindingAPIValidator </a></li></li>
+                        <li> <a href="https://github.com/PixarAnimationStudios/OpenUSD/pull/3166" target="_blank"> Link to SkelBindingAPIValidator </a></li></li>
+                        <li> <a href="https://github.com/PixarAnimationStudios/OpenUSD/pull/3206" target="_blank"> Link to UsdzPackageEncapsulationValidator </a></li></li>
+                    </ul>
+                    <div class="tools-used"><span>All Tools Used:</span> C++, USD, CLion</div>
+                </div>
+                <hr>
+            </div>
+
+            <div class="project">
+                <h3>Wasm USD Enhancements</h3>
+                <p> <b>  April 2024 - Present </b> </p>
+                <div class="experience">
+                    <ul>
+                        <li>Worked on a number of enhancements to the Autodesk wasm USD fork, to support different features for the ThreeJsRenderDelegate for various purposes, including an active viewer for the ASWF USD Assets Working group.</li>
+                        <ul>
+                            <li> <a href="https://github.com/autodesk-forks/USD/compare/adsk/feature/wasm...needle-tools:needle/feature/wasm-improvements" target="_blank"> Link to All Changes </a></li>
+                        </ul>   
+                        <li>
+                            <div> <b>HTTP USD Asset Resolver</b></div>
+                            
+                            <ul>
+                                <li>Created an asset resolver for USD that will fetch assets and relative assets based on a root file</li>
+                                <li><a href="https://github.com/needle-tools/OpenUSD/blob/needle/feature/wasm-improvements/pxr/usdImaging/hdEmscripten/httpResolver/resolver.cpp" target="_blank">Link to Code</a></li> 
+                            </ul>
+                        </li>
+                        <li>
+                            <div> <b>OpenUSD GeomSubset Support in Wasm</b></div> 
+                        
+                            <ul>
+                                <li>Autodesk did initial work to create a three.js render delegate, however this did not support displaying geomsubsets properly. I've added some sync code in the sync delegate to allow for correctly rendering geomsubsets.</li>
+                                <li> <a href="https://github.com/PixarAnimationStudios/OpenUSD/commit/4d5e6cc781692a4f17164fffe9a8f9a047248de2" target="_blank"> Link to Code </a></li>
+                                <li> <a href="https://usd-viewer.glitch.me/?file=https%3A%2F%2Fraw.githubusercontent.com%2Fbeersandrew%2Fusd-test-assets%2Fmain%2FTextureTest%2Fassets%2FgeomSubsetCube.usda" target="_blank"> Link to Example </a></li>  
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="tools-used"><span>All Tools Used:</span> C++, Emscripten, CLion, Bash, JavaScript, USD</div>
+                    
+                </div>
+                <hr>
+            </div>
+
+            <div class="project">
+                <h3>JavaScript USDC Exporter</h3>
+                <p> <b>  June 2024 - July 2024 </b> </p>
+                <div class="experience">
+                    <ul>
+                        <li>Export USDC files in pure JS, inspired by https://github.com/robmcrosby/BlenderUSDZ.</li>
+                    </ul>
+                    <div class="tools-used"><span>All Tools Used:</span> Python, JavaScript, C++, USD</div>
+                </div>
+                <hr>
+            </div>
+
+            <div class="project">
+                <h3>MaterialX Graph Editor: Add Node popup restructure </h3>
+                <p><b>October 2023 - October 2023</b></p>
+                <div class="experience">
+                    <ul>
+                        <li>Part of MaterialX DevDays 2023, the add node popup needed to be reordered to align with specification documents, starting with Source Nodes, followed by Operator Nodes, organizational and nodegraph-like nodes, and then Shader and Material nodes. Additionally, to group multiple variations of each node type into secondary subgroups to simplify the selection process.</li>
+                        <li><a href="https://github.com/AcademySoftwareFoundation/MaterialX/pull/1562" target="_blank"> Link to Code </a></li>
+                    </ul>
+                    <div class="tools-used"><span>All Tools Used:</span> C++</div>
+                </div>
+                <hr>
+            </div>
+
+            <div class="project">
+                <h3>USD Cards Generator</h3>
+                <p> <b>  August 2023 - October 2023 </b> </p>
+                <div class="experience">
+                    <ul>
+                        <li>Created a tool that generates an image along each axis for any given USD file, which allows for much faster asset load times in the case of inspecting an asset</li>
+                        <li><a href="https://github.com/usd-wg/assets/tree/main/scripts/cards-generator" target="_blank">Link to Code</a></li> 
+                    </ul>
+                    <div class="tools-used"><span>All Tools Used:</span> Python, USD</div>
+                </div>
+                <hr>
+            </div>
+
+            <div class="project">
+                <h3>USD Thumbnail Generator</h3>
+                <p> <b>  July 2023 - August 2023 </b> </p>
+                <div class="experience">
+                    <ul>
+                        <li>Created a tool that generates a thumbnail image given any USD file</li>
+                        <li><a href="https://github.com/usd-wg/assets/tree/main/scripts/thumbnail-generator" target="_blank">Link to Code</a></li> 
+                    </ul>
+                    <div class="tools-used"><span>All Tools Used:</span> Python, USD</div>
+                </div>
+                <hr>
             </div>
             
-            <h3>USD Thumbnail Generator</h3>
-            <div class="experience">
-                
-                <ul>
-                    <li>Created a tool that generates a thumbnail image given any USD file</li>
-                    <li><a href="https://github.com/usd-wg/assets/tree/main/scripts/thumbnail-generator" target="_blank">Link to Code</a></li> 
-                </ul>
-                <div class="tools-used"><span>All Tools Used:</span> Python, USD</div>
-            </div>
-
-
-            <h3>USD Cards Generator</h3>
-            <div class="experience">
-                <ul>
-                    <li>Created a tool that generates an image along each axis for any given USD file, which allows for much faster asset load times in the case of inspecting an asset</li>
-                    <li><a href="https://github.com/usd-wg/assets/tree/main/scripts/cards-generator" target="_blank">Link to Code</a></li> 
-                </ul>
-                <div class="tools-used"><span>All Tools Used:</span> Python, USD</div>
-            </div>
-
-            <h3>HTTP USD Asset Resolver</h3>
-            <div class="experience">
-                <ul>
-                    <li>Created an asset resolver for USD that will fetch assets and relative assets based on a root file</li>
-                    <li><a href="https://github.com/beersandrew/USD/tree/http-asset-resolver" target="_blank">Link to Code</a></li> 
-                </ul>
-                <div class="tools-used"><span>All Tools Used:</span> C++, Emscripten, CLion, Bash, JavaScript, USD</div>
-            </div>
-
-            <h3>Merge</h3>
-            <div class="experience">
-                <ul>
-                    <li>Created a 2D puzzle game in Unity</li>
-                    <li><a href="https://andybeers.itch.io/merge" target="_blank">Link to Game</a></li> 
-                </ul>
-                <div class="tools-used"><span>All Tools Used:</span> C#, Unity, AWS, Affinity Designer, Logic Pro</div>
-            </div>
             
         </div>
 
         <div>
             <h2>Links</h2>
             <ul>
-                <li><a href="https://usd-viewer.glitch.me/?file=" target="_blank">Check out USD files here</a></li>
+                <li><a href="https://usd-assets.needle.tools/" target="_blank">Check out USD files here</a></li>
                 <li><a href="https://drive.google.com/file/d/1syY_gK6TnLEHsnzWPnBFANtxZ3yrvBOx/view" target="_blank">Check out My USD Journey here</a></li>
                 <li><a href="https://andybeers.itch.io/" target="_blank">Other games for fun</a></li>
                 <br>
