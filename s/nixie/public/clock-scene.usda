@@ -1,0 +1,64 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    subLayers = [@./clock.usd@]
+    documentation = "Nixie web studio composition. Preserved clock geometry with app-owned illumination and emission art direction."
+)
+over "World"
+{
+    over "NixieClock"
+    {
+        def DistantLight "StudioDirectional"
+        {
+            color3f inputs:color = (1, 0.88, 0.72)
+            float inputs:intensity = 1.5
+            float xformOp:rotateX = -35
+            float xformOp:rotateY = -25
+            uniform token[] xformOpOrder = ["xformOp:rotateY", "xformOp:rotateX"]
+        }
+        def DomeLight "StudioFill"
+        {
+            color3f inputs:color = (0.65, 0.76, 1)
+            float inputs:intensity = 0.002
+        }
+        def RectLight "StudioKey"
+        {
+            float inputs:width = 0.6
+            float inputs:height = 0.15
+            float inputs:intensity = 5
+            color3f inputs:color = (1, 0.9, 0.78)
+            bool inputs:normalize = false
+            double3 xformOp:translate = (-0.15, 0.6, 0.4)
+            float xformOp:rotateX = -40
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateX"]
+        }
+        def RectLight "StudioRim"
+        {
+            float inputs:width = 0.15
+            float inputs:height = 0.4
+            float inputs:intensity = 3
+            color3f inputs:color = (0.65, 0.8, 1)
+            bool inputs:normalize = false
+            double3 xformOp:translate = (0.7, 0.15, 0.1)
+            float xformOp:rotateY = 65
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateY"]
+        }
+        over "WebMaterials"
+        {
+            over "ClearGlass_100"
+            {
+                over "Surface"
+                {
+                    float inputs:opacity = 0
+                }
+            }
+            over "EmissiveFilament_100"
+            {
+                over "Surface"
+                {
+                    color3f inputs:emissiveColor = (12, 1.8, 0.06)
+                }
+            }
+        }
+    }
+}

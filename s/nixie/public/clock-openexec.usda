@@ -1,0 +1,1053 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    subLayers = [
+        @clock-scene.usda@
+    ]
+    timeCodesPerSecond = 1
+)
+
+over "World"
+{
+    over "NixieClock"
+    {
+        def NixieClock "Behavior"
+        {
+            custom token exec:displaySetting = "nixie:hour12"
+            custom token exec:readout = "nixie:digits"
+            custom token exec:timeInput = "nixie:utcSeconds"
+            custom bool nixie:hour12 = 0
+            custom float nixie:intensity = 1.1
+            custom double nixie:utcSeconds = 0
+        }
+
+        over "EnclosureHolder"
+        {
+            over "EnclosureHolder"
+            {
+                over "EnclosureLeft"
+                {
+                    over "Cube_017"
+                    {
+                        token visibility = "invisible"
+                    }
+                }
+
+                over "EnclosureRight"
+                {
+                    over "Cube_015"
+                    {
+                        token visibility = "invisible"
+                    }
+                }
+
+                over "EnclosureTop"
+                {
+                    over "Cube_014"
+                    {
+                        token visibility = "invisible"
+                    }
+                }
+
+                over "EnclosureBack"
+                {
+                    over "Cube_013"
+                    {
+                        token visibility = "invisible"
+                    }
+                }
+
+                over "EnclosureFront"
+                {
+                    over "Cube_011"
+                    {
+                        token visibility = "invisible"
+                    }
+                }
+            }
+        }
+
+        over "BigHourTube"
+        {
+            over "Tube_Prototype"
+            {
+                over "InsideGlass"
+                {
+                    over "Tube_001"
+                    {
+                        token visibility = "invisible"
+                    }
+                }
+            }
+        }
+
+        over "BigHourTubeDigits"
+        {
+            over "Numbers_Lit"
+            {
+                over "_5_Number_Four_Lit"
+                {
+                    over "BezierCurve_017" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigHourTubeDigits/Numbers_Lit/_5_Number_Four_Lit/BezierCurve_017>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 4
+                        custom int nixie:place = 0
+                    }
+                }
+
+                over "_2_Number_Seven_Lit"
+                {
+                    over "BezierCurve_021" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigHourTubeDigits/Numbers_Lit/_2_Number_Seven_Lit/BezierCurve_021>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 7
+                        custom int nixie:place = 0
+                    }
+                }
+
+                over "_9_Number_Zero_Lit"
+                {
+                    over "BezierCurve_025" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigHourTubeDigits/Numbers_Lit/_9_Number_Zero_Lit/BezierCurve_025>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 0
+                        custom int nixie:place = 0
+                    }
+                }
+
+                over "_6_Number_Nine_Lit"
+                {
+                    over "BezierCurve_024" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigHourTubeDigits/Numbers_Lit/_6_Number_Nine_Lit/BezierCurve_024>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 9
+                        custom int nixie:place = 0
+                    }
+                }
+
+                over "_7_Number_Three_Lit"
+                {
+                    over "BezierCurve_016" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigHourTubeDigits/Numbers_Lit/_7_Number_Three_Lit/BezierCurve_016>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 3
+                        custom int nixie:place = 0
+                    }
+                }
+
+                over "_1_Number_Six_Lit"
+                {
+                    over "BezierCurve_020" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigHourTubeDigits/Numbers_Lit/_1_Number_Six_Lit/BezierCurve_020>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 6
+                        custom int nixie:place = 0
+                    }
+                }
+
+                over "_3_Number_Five_Lit"
+                {
+                    over "BezierCurve_019" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigHourTubeDigits/Numbers_Lit/_3_Number_Five_Lit/BezierCurve_019>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 5
+                        custom int nixie:place = 0
+                    }
+                }
+
+                over "_10_Number_One_Lit"
+                {
+                    over "Sphere_005" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigHourTubeDigits/Numbers_Lit/_10_Number_One_Lit/Sphere_005>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 1
+                        custom int nixie:place = 0
+                    }
+                }
+
+                over "_4_Number_Eight_Lit"
+                {
+                    over "BezierCurve_022" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigHourTubeDigits/Numbers_Lit/_4_Number_Eight_Lit/BezierCurve_022>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 8
+                        custom int nixie:place = 0
+                    }
+                }
+
+                over "_8_Number_Two_Lit"
+                {
+                    over "BezierCurve_015" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigHourTubeDigits/Numbers_Lit/_8_Number_Two_Lit/BezierCurve_015>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 2
+                        custom int nixie:place = 0
+                    }
+                }
+            }
+        }
+
+        over "SmallHourTube"
+        {
+            over "Tube_Prototype"
+            {
+                over "InsideGlass"
+                {
+                    over "Tube_001"
+                    {
+                        token visibility = "invisible"
+                    }
+                }
+            }
+        }
+
+        over "SmallHourTubeDigits"
+        {
+            over "Numbers_Lit"
+            {
+                over "_5_Number_Four_Lit"
+                {
+                    over "BezierCurve_017" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallHourTubeDigits/Numbers_Lit/_5_Number_Four_Lit/BezierCurve_017>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 4
+                        custom int nixie:place = 1
+                    }
+                }
+
+                over "_2_Number_Seven_Lit"
+                {
+                    over "BezierCurve_021" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallHourTubeDigits/Numbers_Lit/_2_Number_Seven_Lit/BezierCurve_021>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 7
+                        custom int nixie:place = 1
+                    }
+                }
+
+                over "_9_Number_Zero_Lit"
+                {
+                    over "BezierCurve_025" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallHourTubeDigits/Numbers_Lit/_9_Number_Zero_Lit/BezierCurve_025>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 0
+                        custom int nixie:place = 1
+                    }
+                }
+
+                over "_6_Number_Nine_Lit"
+                {
+                    over "BezierCurve_024" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallHourTubeDigits/Numbers_Lit/_6_Number_Nine_Lit/BezierCurve_024>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 9
+                        custom int nixie:place = 1
+                    }
+                }
+
+                over "_7_Number_Three_Lit"
+                {
+                    over "BezierCurve_016" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallHourTubeDigits/Numbers_Lit/_7_Number_Three_Lit/BezierCurve_016>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 3
+                        custom int nixie:place = 1
+                    }
+                }
+
+                over "_1_Number_Six_Lit"
+                {
+                    over "BezierCurve_020" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallHourTubeDigits/Numbers_Lit/_1_Number_Six_Lit/BezierCurve_020>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 6
+                        custom int nixie:place = 1
+                    }
+                }
+
+                over "_3_Number_Five_Lit"
+                {
+                    over "BezierCurve_019" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallHourTubeDigits/Numbers_Lit/_3_Number_Five_Lit/BezierCurve_019>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 5
+                        custom int nixie:place = 1
+                    }
+                }
+
+                over "_10_Number_One_Lit"
+                {
+                    over "Sphere_005" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallHourTubeDigits/Numbers_Lit/_10_Number_One_Lit/Sphere_005>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 1
+                        custom int nixie:place = 1
+                    }
+                }
+
+                over "_4_Number_Eight_Lit"
+                {
+                    over "BezierCurve_022" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallHourTubeDigits/Numbers_Lit/_4_Number_Eight_Lit/BezierCurve_022>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 8
+                        custom int nixie:place = 1
+                    }
+                }
+
+                over "_8_Number_Two_Lit"
+                {
+                    over "BezierCurve_015" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallHourTubeDigits/Numbers_Lit/_8_Number_Two_Lit/BezierCurve_015>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 2
+                        custom int nixie:place = 1
+                    }
+                }
+            }
+        }
+
+        over "BigMinuteTube"
+        {
+            over "Tube_Prototype"
+            {
+                over "InsideGlass"
+                {
+                    over "Tube_001"
+                    {
+                        token visibility = "invisible"
+                    }
+                }
+            }
+        }
+
+        over "BigMinuteTubeDigits"
+        {
+            over "Numbers_Lit"
+            {
+                over "_5_Number_Four_Lit"
+                {
+                    over "BezierCurve_017" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigMinuteTubeDigits/Numbers_Lit/_5_Number_Four_Lit/BezierCurve_017>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 4
+                        custom int nixie:place = 2
+                    }
+                }
+
+                over "_2_Number_Seven_Lit"
+                {
+                    over "BezierCurve_021" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigMinuteTubeDigits/Numbers_Lit/_2_Number_Seven_Lit/BezierCurve_021>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 7
+                        custom int nixie:place = 2
+                    }
+                }
+
+                over "_9_Number_Zero_Lit"
+                {
+                    over "BezierCurve_025" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigMinuteTubeDigits/Numbers_Lit/_9_Number_Zero_Lit/BezierCurve_025>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 0
+                        custom int nixie:place = 2
+                    }
+                }
+
+                over "_6_Number_Nine_Lit"
+                {
+                    over "BezierCurve_024" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigMinuteTubeDigits/Numbers_Lit/_6_Number_Nine_Lit/BezierCurve_024>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 9
+                        custom int nixie:place = 2
+                    }
+                }
+
+                over "_7_Number_Three_Lit"
+                {
+                    over "BezierCurve_016" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigMinuteTubeDigits/Numbers_Lit/_7_Number_Three_Lit/BezierCurve_016>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 3
+                        custom int nixie:place = 2
+                    }
+                }
+
+                over "_1_Number_Six_Lit"
+                {
+                    over "BezierCurve_020" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigMinuteTubeDigits/Numbers_Lit/_1_Number_Six_Lit/BezierCurve_020>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 6
+                        custom int nixie:place = 2
+                    }
+                }
+
+                over "_3_Number_Five_Lit"
+                {
+                    over "BezierCurve_019" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigMinuteTubeDigits/Numbers_Lit/_3_Number_Five_Lit/BezierCurve_019>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 5
+                        custom int nixie:place = 2
+                    }
+                }
+
+                over "_10_Number_One_Lit"
+                {
+                    over "Sphere_005" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigMinuteTubeDigits/Numbers_Lit/_10_Number_One_Lit/Sphere_005>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 1
+                        custom int nixie:place = 2
+                    }
+                }
+
+                over "_4_Number_Eight_Lit"
+                {
+                    over "BezierCurve_022" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigMinuteTubeDigits/Numbers_Lit/_4_Number_Eight_Lit/BezierCurve_022>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 8
+                        custom int nixie:place = 2
+                    }
+                }
+
+                over "_8_Number_Two_Lit"
+                {
+                    over "BezierCurve_015" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigMinuteTubeDigits/Numbers_Lit/_8_Number_Two_Lit/BezierCurve_015>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 2
+                        custom int nixie:place = 2
+                    }
+                }
+            }
+        }
+
+        over "SmallMinuteTube"
+        {
+            over "Tube_Prototype"
+            {
+                over "InsideGlass"
+                {
+                    over "Tube_001"
+                    {
+                        token visibility = "invisible"
+                    }
+                }
+            }
+        }
+
+        over "SmallMinuteTubeDigits"
+        {
+            over "Numbers_Lit"
+            {
+                over "_5_Number_Four_Lit"
+                {
+                    over "BezierCurve_017" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallMinuteTubeDigits/Numbers_Lit/_5_Number_Four_Lit/BezierCurve_017>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 4
+                        custom int nixie:place = 3
+                    }
+                }
+
+                over "_2_Number_Seven_Lit"
+                {
+                    over "BezierCurve_021" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallMinuteTubeDigits/Numbers_Lit/_2_Number_Seven_Lit/BezierCurve_021>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 7
+                        custom int nixie:place = 3
+                    }
+                }
+
+                over "_9_Number_Zero_Lit"
+                {
+                    over "BezierCurve_025" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallMinuteTubeDigits/Numbers_Lit/_9_Number_Zero_Lit/BezierCurve_025>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 0
+                        custom int nixie:place = 3
+                    }
+                }
+
+                over "_6_Number_Nine_Lit"
+                {
+                    over "BezierCurve_024" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallMinuteTubeDigits/Numbers_Lit/_6_Number_Nine_Lit/BezierCurve_024>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 9
+                        custom int nixie:place = 3
+                    }
+                }
+
+                over "_7_Number_Three_Lit"
+                {
+                    over "BezierCurve_016" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallMinuteTubeDigits/Numbers_Lit/_7_Number_Three_Lit/BezierCurve_016>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 3
+                        custom int nixie:place = 3
+                    }
+                }
+
+                over "_1_Number_Six_Lit"
+                {
+                    over "BezierCurve_020" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallMinuteTubeDigits/Numbers_Lit/_1_Number_Six_Lit/BezierCurve_020>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 6
+                        custom int nixie:place = 3
+                    }
+                }
+
+                over "_3_Number_Five_Lit"
+                {
+                    over "BezierCurve_019" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallMinuteTubeDigits/Numbers_Lit/_3_Number_Five_Lit/BezierCurve_019>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 5
+                        custom int nixie:place = 3
+                    }
+                }
+
+                over "_10_Number_One_Lit"
+                {
+                    over "Sphere_005" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallMinuteTubeDigits/Numbers_Lit/_10_Number_One_Lit/Sphere_005>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 1
+                        custom int nixie:place = 3
+                    }
+                }
+
+                over "_4_Number_Eight_Lit"
+                {
+                    over "BezierCurve_022" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallMinuteTubeDigits/Numbers_Lit/_4_Number_Eight_Lit/BezierCurve_022>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 8
+                        custom int nixie:place = 3
+                    }
+                }
+
+                over "_8_Number_Two_Lit"
+                {
+                    over "BezierCurve_015" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallMinuteTubeDigits/Numbers_Lit/_8_Number_Two_Lit/BezierCurve_015>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 2
+                        custom int nixie:place = 3
+                    }
+                }
+            }
+        }
+
+        over "BigSecondTube"
+        {
+            over "Tube_Prototype"
+            {
+                over "InsideGlass"
+                {
+                    over "Tube_001"
+                    {
+                        token visibility = "invisible"
+                    }
+                }
+            }
+        }
+
+        over "BigSecondTubeDigits"
+        {
+            over "Numbers_Lit"
+            {
+                over "_5_Number_Four_Lit"
+                {
+                    over "BezierCurve_017" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigSecondTubeDigits/Numbers_Lit/_5_Number_Four_Lit/BezierCurve_017>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 4
+                        custom int nixie:place = 4
+                    }
+                }
+
+                over "_2_Number_Seven_Lit"
+                {
+                    over "BezierCurve_021" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigSecondTubeDigits/Numbers_Lit/_2_Number_Seven_Lit/BezierCurve_021>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 7
+                        custom int nixie:place = 4
+                    }
+                }
+
+                over "_9_Number_Zero_Lit"
+                {
+                    over "BezierCurve_025" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigSecondTubeDigits/Numbers_Lit/_9_Number_Zero_Lit/BezierCurve_025>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 0
+                        custom int nixie:place = 4
+                    }
+                }
+
+                over "_6_Number_Nine_Lit"
+                {
+                    over "BezierCurve_024" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigSecondTubeDigits/Numbers_Lit/_6_Number_Nine_Lit/BezierCurve_024>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 9
+                        custom int nixie:place = 4
+                    }
+                }
+
+                over "_7_Number_Three_Lit"
+                {
+                    over "BezierCurve_016" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigSecondTubeDigits/Numbers_Lit/_7_Number_Three_Lit/BezierCurve_016>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 3
+                        custom int nixie:place = 4
+                    }
+                }
+
+                over "_1_Number_Six_Lit"
+                {
+                    over "BezierCurve_020" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigSecondTubeDigits/Numbers_Lit/_1_Number_Six_Lit/BezierCurve_020>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 6
+                        custom int nixie:place = 4
+                    }
+                }
+
+                over "_3_Number_Five_Lit"
+                {
+                    over "BezierCurve_019" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigSecondTubeDigits/Numbers_Lit/_3_Number_Five_Lit/BezierCurve_019>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 5
+                        custom int nixie:place = 4
+                    }
+                }
+
+                over "_10_Number_One_Lit"
+                {
+                    over "Sphere_005" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigSecondTubeDigits/Numbers_Lit/_10_Number_One_Lit/Sphere_005>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 1
+                        custom int nixie:place = 4
+                    }
+                }
+
+                over "_4_Number_Eight_Lit"
+                {
+                    over "BezierCurve_022" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigSecondTubeDigits/Numbers_Lit/_4_Number_Eight_Lit/BezierCurve_022>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 8
+                        custom int nixie:place = 4
+                    }
+                }
+
+                over "_8_Number_Two_Lit"
+                {
+                    over "BezierCurve_015" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/BigSecondTubeDigits/Numbers_Lit/_8_Number_Two_Lit/BezierCurve_015>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 2
+                        custom int nixie:place = 4
+                    }
+                }
+            }
+        }
+
+        over "SmallSecondTube"
+        {
+            over "Tube_Prototype"
+            {
+                over "InsideGlass"
+                {
+                    over "Tube_001"
+                    {
+                        token visibility = "invisible"
+                    }
+                }
+            }
+        }
+
+        over "SmallSecondTubeDigits"
+        {
+            over "Numbers_Lit"
+            {
+                over "_5_Number_Four_Lit"
+                {
+                    over "BezierCurve_017" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallSecondTubeDigits/Numbers_Lit/_5_Number_Four_Lit/BezierCurve_017>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 4
+                        custom int nixie:place = 5
+                    }
+                }
+
+                over "_2_Number_Seven_Lit"
+                {
+                    over "BezierCurve_021" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallSecondTubeDigits/Numbers_Lit/_2_Number_Seven_Lit/BezierCurve_021>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 7
+                        custom int nixie:place = 5
+                    }
+                }
+
+                over "_9_Number_Zero_Lit"
+                {
+                    over "BezierCurve_025" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallSecondTubeDigits/Numbers_Lit/_9_Number_Zero_Lit/BezierCurve_025>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 0
+                        custom int nixie:place = 5
+                    }
+                }
+
+                over "_6_Number_Nine_Lit"
+                {
+                    over "BezierCurve_024" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallSecondTubeDigits/Numbers_Lit/_6_Number_Nine_Lit/BezierCurve_024>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 9
+                        custom int nixie:place = 5
+                    }
+                }
+
+                over "_7_Number_Three_Lit"
+                {
+                    over "BezierCurve_016" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallSecondTubeDigits/Numbers_Lit/_7_Number_Three_Lit/BezierCurve_016>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 3
+                        custom int nixie:place = 5
+                    }
+                }
+
+                over "_1_Number_Six_Lit"
+                {
+                    over "BezierCurve_020" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallSecondTubeDigits/Numbers_Lit/_1_Number_Six_Lit/BezierCurve_020>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 6
+                        custom int nixie:place = 5
+                    }
+                }
+
+                over "_3_Number_Five_Lit"
+                {
+                    over "BezierCurve_019" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallSecondTubeDigits/Numbers_Lit/_3_Number_Five_Lit/BezierCurve_019>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 5
+                        custom int nixie:place = 5
+                    }
+                }
+
+                over "_10_Number_One_Lit"
+                {
+                    over "Sphere_005" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallSecondTubeDigits/Numbers_Lit/_10_Number_One_Lit/Sphere_005>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 1
+                        custom int nixie:place = 5
+                    }
+                }
+
+                over "_4_Number_Eight_Lit"
+                {
+                    over "BezierCurve_022" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallSecondTubeDigits/Numbers_Lit/_4_Number_Eight_Lit/BezierCurve_022>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 8
+                        custom int nixie:place = 5
+                    }
+                }
+
+                over "_8_Number_Two_Lit"
+                {
+                    over "BezierCurve_015" (
+                        prepend apiSchemas = ["NixieDigitAPI"]
+                    )
+                    {
+                        custom rel exec:binding:visibility = </World/NixieClock/SmallSecondTubeDigits/Numbers_Lit/_8_Number_Two_Lit/BezierCurve_015>
+                        custom token exec:computation:visibility = "nixie:visibility"
+                        custom rel nixie:clock = </World/NixieClock/Behavior>
+                        custom int nixie:digit = 2
+                        custom int nixie:place = 5
+                    }
+                }
+            }
+        }
+
+        over "WebMaterials"
+        {
+            over "EmissiveFilament_100"
+            {
+                over "Surface"
+                {
+                    custom rel exec:binding:inputs:emissiveColor = </World/NixieClock/Behavior>
+                    custom token exec:computation:inputs:emissiveColor = "nixie:emission"
+                }
+            }
+        }
+    }
+
+    def Camera "PlayerCamera"
+    {
+        float2 clippingRange = (0.005, 10)
+        float focalLength = 50
+        float horizontalAperture = 36
+        float verticalAperture = 16
+        double3 xformOp:translate = (0, 0.016, 0.82)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+}
+

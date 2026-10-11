@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#07090c"><meta name="description" content="A path-traced Nixie clock on your desk, rendered live from USD in the browser."><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'"><title>Nixie Clock</title><link rel="stylesheet" href="site.css"></head>
+<body>
+<canvas id="clock" tabindex="0" aria-label="Path-traced Nixie clock. Drag to turn; scroll to zoom."></canvas>
+<div id="loading" role="status">Preparing the glass and wire…</div>
+<header class="chrome"><button id="settings-toggle" class="round" aria-expanded="false" aria-controls="settings" aria-label="Settings">
+ <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3.3h-4L10.6 6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1c.5.4 1.1.7 1.7 1l.4 2.7h4l.4-2.7c.6-.3 1.2-.6 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z" transform="translate(-1 0)"/></svg></button></header>
+<p class="hint" id="hint">Drag to turn · scroll to approach</p>
+<aside id="settings" class="settings" hidden aria-label="Nixie Clock Settings">
+ <h2>Nixie Clock Settings</h2>
+ <a class="vision" href="https://apps.apple.com/us/app/3d-nixie-clock/id6761805722" target="_blank" rel="noopener">
+  <span><strong>Experience in Vision Pro</strong><small>Free on Apple Vision Pro</small></span>
+  <img src="assets/app-store-badge.svg" alt="Download on the App Store" height="40">
+ </a>
+ <h3>Clock</h3>
+ <div class="group">
+  <label class="row"><span>24-Hour Format</span><input type="checkbox" class="switch" id="use24"></label>
+  <label class="row"><span>Timezone</span><select id="timezone"></select></label>
+ </div>
+ <h3>Appearance</h3>
+ <div class="group">
+  <label class="row"><span>Colon Blink</span><input type="checkbox" class="switch" id="colonBlink"></label>
+  <div class="row stacked"><div class="row-head"><span>Digit Emission</span><output id="emissionValue">1.00</output></div><input type="range" id="emission" min="0.05" max="2" step="0.05"></div>
+  <label class="row"><span>Tube LEDs</span><input type="checkbox" class="switch" id="leds"></label>
+  <div class="row stacked" id="ledHueRow"><div class="row-head"><span>Tube LED Color</span></div><input type="range" id="ledHue" class="hue" min="0" max="1" step="0.005"></div>
+  <label class="row"><span>Glass Enclosure</span><input type="checkbox" class="switch" id="enclosure"></label>
+ </div>
+ <button id="reset" class="text">Reset view</button>
+</aside>
+<script type="module" src="site-app.js"></script>
+</body></html>

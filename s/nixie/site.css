@@ -1,0 +1,43 @@
+:root{color-scheme:dark;--ink:#f2ede4;--muted:#9a9ea4;--panel:rgba(28,30,34,.72);--row:rgba(255,255,255,.07);--line:rgba(255,255,255,.08);--amber:#f0a368;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;overflow:hidden;background:#07090c;color:var(--ink)}
+canvas{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+canvas:active{cursor:grabbing}
+#loading{position:fixed;inset:50% 0 auto;text-align:center;font-size:14px;color:var(--amber);pointer-events:none}
+#loading[hidden]{display:none}
+.chrome{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:flex-end;padding:20px 24px;pointer-events:none}
+.chrome>*{pointer-events:auto}
+.round{width:40px;height:40px;border-radius:50%;border:0;background:var(--panel);color:var(--ink);display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.round:hover,.round[aria-expanded=true]{color:var(--amber)}
+.hint{position:fixed;bottom:18px;left:0;right:0;margin:0;text-align:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);pointer-events:none;transition:opacity 1.2s}
+.hint.gone{opacity:0}
+.settings{position:fixed;top:72px;right:24px;width:min(380px,calc(100vw - 32px));max-height:calc(100vh - 96px);overflow:auto;padding:22px 18px 16px;border-radius:28px;background:var(--panel);backdrop-filter:blur(30px) saturate(1.4);-webkit-backdrop-filter:blur(30px) saturate(1.4);box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.settings[hidden]{display:none}
+.settings h2{margin:0 6px 16px;font-size:19px;font-weight:600}
+.vision{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:16px;background:var(--row);color:var(--ink);text-decoration:none}
+.vision span{display:flex;flex-direction:column;gap:3px}
+.vision strong{font-size:15px;font-weight:600}
+.vision small{font-size:12px;color:var(--muted)}
+/* Apple's unmodified badge: at least 40px tall with clear space around it. */
+.vision img{display:block;height:40px;width:auto;flex:none;margin:4px}
+.settings h3{margin:18px 14px 6px;font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.group{border-radius:16px;background:var(--row);overflow:hidden}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:10px 14px;font-size:15px}
+.row+.row{border-top:1px solid var(--line)}
+.row.stacked{flex-direction:column;align-items:stretch;gap:10px}
+.row-head{display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
+.row-head output{font-variant-numeric:tabular-nums}
+.row[hidden]{display:none}
+select{max-width:60%;background:transparent;color:var(--muted);border:0;font:inherit;text-align:right;cursor:pointer}
+select option{background:#1c1e22;color:var(--ink)}
+.switch{appearance:none;-webkit-appearance:none;position:relative;width:51px;height:31px;margin:0;border-radius:16px;background:rgba(120,120,128,.36);cursor:pointer;transition:background .2s;flex:none}
+.switch::after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.3);transition:transform .2s}
+.switch:checked{background:#34c759}
+.switch:checked::after{transform:translateX(20px)}
+input[type=range]{width:100%;accent-color:var(--amber)}
+input.hue{appearance:none;-webkit-appearance:none;height:24px;border-radius:6px;background:linear-gradient(90deg,hsl(0 90% 50%),hsl(36 90% 50%),hsl(72 90% 50%),hsl(108 90% 50%),hsl(144 90% 50%),hsl(180 90% 50%),hsl(216 90% 50%),hsl(252 90% 50%),hsl(288 90% 50%),hsl(324 90% 50%),hsl(360 90% 50%))}
+input.hue::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:transparent;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.5)}
+input.hue::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:transparent;border:2px solid #fff}
+button.text{display:block;margin:14px auto 0;border:0;background:none;color:var(--amber);font:inherit;font-size:14px;cursor:pointer}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+@media(max-width:600px){.settings{top:auto;bottom:16px;right:16px;max-height:70vh}}
