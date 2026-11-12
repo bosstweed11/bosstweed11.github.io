@@ -1,0 +1,1 @@
+var a=Object.defineProperty;var e=(s,d)=>a(s,"name",{value:d,configurable:!0});const o=/^usdview-load:(\d+):(.*)$/s;function c(s){const d=o.exec(s);return d?d[2]:s}e(c,"displayResolvedPath");export{c as d,o as u};
