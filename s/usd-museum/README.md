@@ -2,23 +2,36 @@
 
 ![A walk through the museum's ten wings, 67 stops in 30 seconds](media/tour.gif)
 
+**Take the tour:** open `tour.usda` with the camera `/museum/cameras/tour_cam` and press Play. One animated
+camera walks every wing and stops at each exhibit (11,839 frames, about 8 minutes at 24 fps). Its path is
+time-sampled data, in [tour_cam.usdc](tour_cam.usdc). In a browser:
+[andrew.beer/s/usdview](https://andrew.beer/s/usdview/), then Start Museum Tour. See [Viewing](#viewing).
+
 ## What
 
-A USD scene intended to express the features of USD.
+A USD scene that shows USD's features, one exhibit at a time, so you can see whether a viewer or
+runtime gets them right.
 
-### Why
+## Why
 
-To attempt a more human-centric specification test, in support of AOUSD.
+USD's behavior is defined mostly by what OpenUSD does. AOUSD is writing it down as a specification,
+and the museum is a test you can look at, in support of that work. Each rule gets a small scene where
+the right answer is visible: every piece sits beside a reference mark (an outline the object must
+fill, a base in the color that must win, a red outline that must stay empty). When a viewer gets the
+rule wrong, you see it, and the exhibit tells you which rule.
 
-### How
+Ways to use it:
 
-Every prim in this museum was built by Claude Opus 5.5 (Anthropic), working in Claude Code: it designed
-the exhibits and wrote the scripts that author them. Each file says so in OpenUSD's own authorship records
-(`AuthorshipAPI`, new in OpenUSD 26.11) on the root prim of the museum, every wing and every exhibit;
-`usdauthors -s tour.usda` lists them.
-
-The museum, every wing and every exhibit also carry a 512 px thumbnail (`thumbnail.jpg` beside the file,
-authored with `AssetPreviewsAPI`), for tools that show an asset before opening it. Rigging has none yet.
+- **Check your viewer, renderer or runtime.** Play the tour, or open one exhibit. Anything that
+  doesn't match its reference is a bug, and the sign beside it names the feature.
+- **Recognize a bug by how it looks.** 436 forgeries each plant one plausible mistake in an exhibit
+  (`composition/arcs/variants/forgeries/nofallback.usda` ignores variant fallbacks;
+  `foundations/paths/names/forgeries/target_off_by_one.usda` resolves a relative path one level off).
+  If your output looks like a forgery, you know which rule you're breaking.
+- **Learn USD one feature at a time.** 152 features across eleven wings, each tagged on the signs
+  and listed under [Features](#features) with the exhibits that show it.
+- **Borrow exhibits as test fixtures.** Every exhibit is a self-contained folder with relative paths
+  that opens on its own, and everything is CC0.
 
 ## Glossary
 
@@ -26,15 +39,14 @@ authored with `AssetPreviewsAPI`), for tools that show an asset before opening i
 |---|---|
 | **Museum** | The whole thing: `museum.usda`, every wing placed along one route, joined by corridors |
 | **Wing** | One big area of USD (Composition, Animation, Materials...). A folder here, with its own `tour.usda` |
-| **Hall** | A wing's entrance room: its walls, lamps and signs |
+| **Hall** | A wing's entrance room: its walls and signs |
 | **Gallery** | One topic inside a wing (in Composition: arcs, strength, edits...). A subfolder of the wing |
 | **Exhibit** | One USD asset that demonstrates a topic. It opens on its own: `<wing>/<gallery>/<exhibit>/<exhibit>.usda` |
 | **Piece** | One part of an exhibit that shows one rule (in the variants exhibit: default, stronger, fallback, nested) |
 | **Reference** | The marks beside a piece that say what must happen: an outline the object must fill, a base in the color that must win, a red outline that must stay empty |
 | **Forgery** | A copy of an exhibit with one plausible mistake planted. A small override layer in the exhibit's `forgeries/` folder; it renders visibly wrong against the reference |
 | **Hold** | The moment in the tour when the camera pauses on an exhibit, which is when a forgery shows |
-| **Tour** | `tour.usda`: a camera path through the museum or a wing, with a frame range and a load schedule |
-| **Load schedule** | Which galleries (the **carriers**) are loaded at each frame, so a viewer loads only what is near the camera |
+| **Tour** | `tour.usda`: a camera path through the museum or a wing, with a frame range and the museum's light |
 | **Feature** | Something USD does that a user would name ("payloads", "variant fallbacks"); see below |
 
 ## Features
@@ -103,7 +115,7 @@ The museum shows 152 features of USD, by wing in tour order; the 26 it doesn't s
 | `CMP‑25` | Array edits (sparse edits to array values) | An array-valued attribute can hold an edit instead of a whole array (write value to index, append, prepend, erase, resize, minsize/maxsize) that applies on top of the next weaker array, including per time sample and in clips. | composition/edits |
 | `CMP‑26` | Diamonds (repeated arcs) | When two arcs bring in the same layer (a diamond), it is composed once, at its strongest place. | composition/errors |
 | `CMP‑27` | Cycles | An arc that would bring in something it is already inside (a reference, inherit or sublayer cycle) is reported and skipped; the rest still composes. | composition/errors |
-| `CMP‑28` | Composition errors and recovery | Bad arcs (missing files, missing target prims, cycles, invalid relocates or targets, conflicting property types) are reported and skipped while the rest of the stage composes. | foundations/paths, composition/errors |
+| `CMP‑28` | Composition errors and recovery | Bad arcs (missing files, missing target prims, cycles, invalid relocates or targets, conflicting property types) are reported and skipped while the rest of the stage composes. | composition/errors |
 | `CMP‑29` | Relocates combined with classes, variants and payloads | A relocated prim keeps the inherits it had at its old place ('spooky inherits'), can be overridden by variants, can come from a payload, and connections pointing at it are remapped. | composition/namespace |
 
 ### 3. Instancing wing
@@ -278,11 +290,29 @@ The museum shows 152 features of USD, by wing in tour order; the 26 it doesn't s
 | File | What it is |
 |---|---|
 | [museum.usda](museum.usda) | The museum as one assembly: ten wings, each referenced from `./<wing>/<wing>.usda` and placed and timed along one route, plus the corridors between them |
-| [tour.usda](tour.usda) | The guided tour, 11,839 frames (8.2 minutes at 24 fps): sublayers `museum.usda` and adds the tour camera, cameras to jump to (below), the load schedule and the doors closed between wings |
+| [tour.usda](tour.usda) | The guided tour, 11,839 frames (8.2 minutes at 24 fps): sublayers `museum.usda` and adds the tour camera, cameras to jump to (below), the museum's light and the doors closed between wings |
 | [tour_cam.usdc](tour_cam.usdc) | The tour camera's path, referenced by `tour.usda` (binary: one sample per frame) |
 
 The whole tour runs with OpenExec off, so it leaves out the Rigging wing, which is its own
 tour (`rigging/tour.usda`).
+
+### What's in tour.usda
+
+The top of the tour reads like a table of contents. Under `/museum`:
+
+| Prim | What it holds |
+|---|---|
+| `cameras` | `tour_cam` first, then the cameras to jump to ([Cameras](#cameras)) |
+| `lighting` | The museum's light: a warm key and a cool fill `DistantLight`, always on |
+| `wings` | The ten wings in tour order, `wings/foundations` ... `wings/physics` |
+| `corridors` | The corridors that join one wing to the next |
+
+A wing's own `tour.usda` has the same shape: `/<wing>/cameras/tour_cam` and `/<wing>/lighting`.
+Everything is loaded: there is no load schedule, so open the tour as usdview does by default, with
+every payload loaded.
+
+**Lighting.** The 13 lights are the key and fill, plus the Lights wing's exhibits, whose own lights are
+part of what they show; only the dome exhibit's two dome lights switch on and off.
 
 ### Wings
 
@@ -290,7 +320,7 @@ Eleven wings, in tour order:
 
 | # | Wing | Galleries | Exhibits | Forgeries |
 |---|---|---|---|---|
-| 1 | [foundations](foundations/foundations.usda) | files, packages, types, model, paths | 8 | 54 |
+| 1 | [foundations](foundations/foundations.usda) | files, packages, types, model, paths | 8 | 53 |
 | 2 | [composition](composition/composition.usda) | arcs, loading, strength, namespace, edits, errors | 11 | 104 |
 | 3 | [instancing](instancing/instancing.usda) | native, points, crowds | 3 | 25 |
 | 4 | [animation](animation/animation.usda) | keys, time, splines, clips, blocks, characters, motion | 7 | 74 |
@@ -307,7 +337,7 @@ Eleven wings, in tour order:
 **Folders mirror prim paths.** The prim `/<wing>/<gallery>/<exhibit>` is the folder
 `<wing>/<gallery>/<exhibit>/`: if you can see a prim in usdview, you can find its files. Each
 wing has `<wing>.usda` (the wing itself, which opens on its own) and `tour.usda` (which adds the
-camera, frame range and load schedule).
+camera, frame range and light). In the whole museum the same prims sit under `/museum/wings/<wing>/...`.
 
 **Every asset has the same shape:**
 
@@ -332,9 +362,9 @@ its `doc` names the bug and what to look for. Open it next to the exhibit's entr
 difference. A few can't be written as overrides (relocates, for example) and are edited copies
 in `forgeries/<key>/`; each says why.
 
-**Broken on purpose.** Every entry passes `usdchecker` except five exhibits that break USD on
-purpose: `composition/errors/cycles`, `animation/time/offsets`, `foundations/paths/names`,
-`foundations/types/twins` and `stage/schemas/applied`. Each declares its errors in
+**Broken on purpose.** Every entry passes `usdchecker` except four exhibits that break USD on
+purpose: `composition/errors/cycles`, `animation/time/offsets`, `foundations/types/twins` and
+`stage/schemas/applied`. Each declares its errors in
 `customData["museum"]["expected_errors"]`, and the wings and tours that contain them inherit only
 those errors.
 
@@ -346,8 +376,8 @@ variants exhibit's fallback piece; global variant fallbacks come only from a plu
 
 ```sh
 export PXR_PLUGINPATH_NAME=$PWD/config/variantFallbacks
-usdview tour.usda --camera /museum/tour/tour_cam                  # the whole museum
-usdview composition/tour.usda --camera /composition/tour/tour_cam # one wing
+usdview tour.usda --camera /museum/cameras/tour_cam                  # the whole museum
+usdview composition/tour.usda --camera /composition/cameras/tour_cam # one wing
 usdview composition/arcs/arcs/arcs.usda                           # one exhibit
 usdview composition/arcs/arcs/forgeries/noinherit.usda            # the same exhibit, one planted mistake
 ```
@@ -355,14 +385,14 @@ usdview composition/arcs/arcs/forgeries/noinherit.usda            # the same exh
 The Rigging wing needs OpenExec, which usdview reads from the environment:
 
 ```sh
-USDIMAGINGGL_ENGINE_ENABLE_EXEC_SCENE_INDEX=1 usdview rigging/tour.usda --camera /rigging/tour/tour_cam
+USDIMAGINGGL_ENGINE_ENABLE_EXEC_SCENE_INDEX=1 usdview rigging/tour.usda --camera /rigging/cameras/tour_cam
 ```
 
 ### Cameras
 
 `tour.usda` also has cameras to jump to, in usdview's Camera > Select Camera. usdview lists the
 first 20 by name and puts the rest under "More Cameras...", so they come in this order, all under
-`/museum/tour`:
+`/museum/cameras`:
 
 1. `tour_cam`, the guided tour.
 2. One per wing, in tour order (`Foundations_Wing` ... `Physics_Wing`): from the corner beside the
@@ -373,8 +403,18 @@ first 20 by name and puts the rest under "More Cameras...", so they come in this
 4. One per exhibit, in tour order (`Stop_<Wing>_<Exhibit>`): the tour's view at that exhibit's stop.
 
 They don't move, and each says in `customData["museum"]["frame"]` which tour frame to go to, so the
-exhibit is loaded and where the tour shows it. They are invisible, so usdview draws no camera
+exhibit is where the tour shows it. They are invisible, so usdview draws no camera
 outline for them. The Cameras wing's own exhibit cameras come after them.
+
+## Who built it
+
+Every prim in this museum was built by Claude Opus 5.5 (Anthropic), working in Claude Code: it designed
+the exhibits and wrote the scripts that author them. Each file says so in OpenUSD's own authorship records
+(`AuthorshipAPI`, new in OpenUSD 26.11) on the root prim of the museum, every wing and every exhibit;
+`usdauthors -s tour.usda` lists them.
+
+The museum, every wing and every exhibit also carry a 512 px thumbnail (`thumbnail.jpg` beside the file,
+authored with `AssetPreviewsAPI`), for tools that show an asset before opening it. Rigging has none yet.
 
 ## License
 
