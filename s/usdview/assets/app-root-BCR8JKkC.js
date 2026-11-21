@@ -1,0 +1,1 @@
+var o=Object.defineProperty;var n=(e,r)=>o(e,"name",{value:r,configurable:!0});function i(){return new URL("..",String(import.meta.url))}n(i,"viewerRoot");function w(e,r=document.baseURI){const t=new URL(e,i()).href;return new URL(e,r).href===t?e:t}n(w,"viewerFileUrl");export{w as a,i as v};
