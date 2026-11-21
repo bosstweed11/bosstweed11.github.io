@@ -1,0 +1,16 @@
+{
+  "samples": [
+    {
+      "name": "shapes",
+      "title": "Shapes (5.6 MB of meshes)",
+      "root": "shapes/shapes.usda",
+      "source": "Made for these pages",
+      "url": "",
+      "licence": "CC0 1.0",
+      "from": "apps/usd-tools/scripts/samples.mjs"
+    }
+  ],
+  "files": [
+    "shapes/shapes.usda"
+  ]
+}
