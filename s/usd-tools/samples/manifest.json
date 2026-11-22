@@ -1,9 +1,18 @@
 {
   "samples": [
     {
-      "name": "shapes",
-      "title": "Shapes (5.6 MB of meshes)",
-      "root": "shapes/shapes.usda",
+      "name": "suitcase",
+      "title": "Museum: the suitcase package, unpacked",
+      "root": "suitcase/suitcase.usdc",
+      "source": "USD Museum",
+      "url": "https://github.com/beersandrew/usd-museum",
+      "licence": "CC0 1.0",
+      "from": "foundations/files/formats/assets/case_c.usdz"
+    },
+    {
+      "name": "wireframes",
+      "title": "Wireframes (green wireframe shapes)",
+      "root": "wireframes/wireframes.usda",
       "source": "Made for these pages",
       "url": "",
       "licence": "CC0 1.0",
@@ -11,6 +20,8 @@
     }
   ],
   "files": [
-    "shapes/shapes.usda"
+    "suitcase/suitcase.usdc",
+    "suitcase/textures/label.png",
+    "wireframes/wireframes.usda"
   ]
 }
